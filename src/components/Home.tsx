@@ -8,7 +8,7 @@ import { addNewUser } from '../store/modules/user/actions';
 
 
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Table} from 'reactstrap';
+    CardTitle, CardSubtitle, Button, Table, Container, Row, Col} from 'reactstrap';
 
 
 
@@ -34,28 +34,47 @@ const Home: React.FC = () => {
     }, [dispatch]) 
 
     return (
+        <Container><Row>
+        
+        
         <div>
             <h1>Hello</h1>
-            
-            
-            
-            
-            
+            </div>
+            </Row>
+
+
+
+            <Row>
+
+
             <div>
+            <Table striped>    
+            <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>idade</th>
+          <th></th>
+        </tr>
+      </thead>       
+            <tbody>
                 { users.map( user => (
-                    <div key={user.id}>
-                        <article>
-                            <p> { user.name } | { user.email } | { user.age }</p>
-                            <Button color="primary" onClick={ () => handleUsers(user) }> Adicionar </Button>
+                    <tr key={user.id}>
+                            <td> { user.id}</td>
+                            <td> { user.name }</td> 
+                            <td> { user.email }</td> 
+                            <td> { user.age }</td>
+                            <td><Button color="primary" onClick={ () => handleUsers(user) }> Adicionar </Button></td>
                             
-                        </article>
+                        
                         
     
-                    </div>
+                    </tr>
                     
                 ))}
-            </div>
-        </div>
+            </tbody></Table></div>
+         </Row></Container>
     );
 }
 
